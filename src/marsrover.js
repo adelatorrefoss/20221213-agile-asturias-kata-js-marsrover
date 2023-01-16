@@ -1,99 +1,90 @@
-const marsrover = {
+const marsRover = {
   x: 0,
   y: 0,
-  direction: 'N'
+  direction: "N",
 };
 
 const initialize = (params) => {
-  marsrover.x = params.x;
-  marsrover.y = params.y;
-  marsrover.direction = params.direction;
+  marsRover.x = params.x;
+  marsRover.y = params.y;
+  marsRover.direction = params.direction;
 };
 
-const getMarsRover = () => marsrover;
+const getMarsRover = () => marsRover;
 
-const sendCommand = command => {
-
-  for (var i = 0; i < command.length; i++) {
+const sendCommand = (command) => {
+  for (let i = 0; i < command.length; i++) {
     processStep(command.charAt(i));
   }
+};
 
-}
-
-const processStep = step => {
-  
+const processStep = (step) => {
   switch (step) {
-    case 'f':
+    case "f":
       move(1);
       break;
 
-    case 'b':
+    case "b":
       move(-1);
       break;
 
-    case 'l':
+    case "l":
       rotateLeft();
       break;
 
-    case 'r':
+    case "r":
       rotateRight();
       break;
-
   }
-
-}
+};
 
 function rotateRight() {
-
-  switch (marsrover.direction) {
-    case 'N':
-      marsrover.direction = 'E';
+  switch (marsRover.direction) {
+    case "N":
+      marsRover.direction = "E";
       break;
-    case 'S':
-      marsrover.direction = 'W';
+    case "S":
+      marsRover.direction = "W";
       break;
-    case 'E':
-      marsrover.direction = 'S';
+    case "E":
+      marsRover.direction = "S";
       break;
-    case 'W':
-      marsrover.direction = 'N';
+    case "W":
+      marsRover.direction = "N";
       break;
   }
-
 }
 
 function rotateLeft() {
- 
-  switch (marsrover.direction) {
-    case 'N':
-      marsrover.direction = 'W';
+  switch (marsRover.direction) {
+    case "N":
+      marsRover.direction = "W";
       break;
-    case 'S':
-      marsrover.direction = 'E';
+    case "S":
+      marsRover.direction = "E";
       break;
-    case 'E':
-      marsrover.direction = 'N';
+    case "E":
+      marsRover.direction = "N";
       break;
-    case 'W':
-      marsrover.direction = 'S';
+    case "W":
+      marsRover.direction = "S";
       break;
   }
-  
 }
 
 function move(inc) {
-  switch (marsrover.direction) {
-    case 'N':
-      marsrover.y += inc;
+  switch (marsRover.direction) {
+    case "N":
+      marsRover.y += inc;
       break;
-    case 'S':
-      marsrover.y -= inc;
+    case "S":
+      marsRover.y -= inc;
       break;
-    case 'E':
-      marsrover.x += inc;
+    case "E":
+      marsRover.x += inc;
       break;
-    case 'W':
-      marsrover.x -= inc;
+    case "W":
+      marsRover.x -= inc;
       break;
   }
 }
@@ -101,5 +92,5 @@ function move(inc) {
 module.exports = {
   initialize,
   getMarsRover,
-  sendCommand
+  sendCommand,
 };
